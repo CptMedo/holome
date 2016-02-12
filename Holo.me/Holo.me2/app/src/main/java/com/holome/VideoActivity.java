@@ -1,3 +1,16 @@
+/**
+ *
+ * VideoActivity.java
+ * by Médéric Hénin on 12/02/2016
+ *
+ * THIS SOFTWARE IS UNDER CC-BY-NC LICENSE :
+ * The licensor permits others to copy, distribute, display, and perform the work.
+ * In return, licenses must give the original author credit.
+ * The licensor permits others to copy, distribute, display, and perform the work.
+ * In return, licenses may not use the work for commercial purposes -- unless they get the licensor's permission.
+ *
+ */
+
 package com.holome;
 
 import android.content.Intent;
@@ -27,21 +40,26 @@ public class VideoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
 
+        // set application on fullscreen
         View decorView = getWindow().getDecorView();
         int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
 
         Intent intent = getIntent();
 
+        //get the video Id from intent
         if (intent != null) {
 
             videoId = intent.getStringExtra(VIDEO_ID);
             Log.i("video :", videoId);
         }
 
+        //retrieve video name
         videoName = getVideoName(videoId);
 
+
         mVideoView = (VideoView)findViewById(R.id.videoView);
+        // get video from raw
         int resId = getResources().getIdentifier(videoName , "raw", getPackageName());
 
         String uriPath = "android.resource://com.holome/" + resId;
@@ -50,6 +68,7 @@ public class VideoActivity extends AppCompatActivity {
         Uri uri = Uri.parse(uriPath);
         mVideoView.setVideoURI(uri);
 
+        // loop video on completion
         mVideoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
 
             @Override
@@ -62,10 +81,12 @@ public class VideoActivity extends AppCompatActivity {
 
 //        mVideoView.setMediaController(new MediaController(this));
 //
+        // start video and display it
         mVideoView.start();
         mVideoView.requestFocus();
     }
 
+    // Return video name from videoId
     String getVideoName(String videoId) {
         switch (videoId) {
             case "aJX9ak" : return "adrien";
@@ -80,6 +101,7 @@ public class VideoActivity extends AppCompatActivity {
         return null;
     }
 
+    // Get Id from raw with video name
     public int getResId(String variableName, Class<?> с) {
 
         Field field = null;

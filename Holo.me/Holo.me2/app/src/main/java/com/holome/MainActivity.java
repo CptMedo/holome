@@ -1,3 +1,16 @@
+/**
+ *
+ * MainActivity.java
+ * by Médéric Hénin on 12/02/2016
+ *
+ * THIS SOFTWARE IS UNDER CC-BY-NC LICENSE :
+ * The licensor permits others to copy, distribute, display, and perform the work.
+ * In return, licenses must give the original author credit.
+ * The licensor permits others to copy, distribute, display, and perform the work.
+ * In return, licenses may not use the work for commercial purposes -- unless they get the licensor's permission.
+ *
+ */
+
 package com.holome;
 
 import android.app.AlertDialog;
@@ -33,11 +46,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         editText = (EditText) findViewById(R.id.editText);
 
         textView = (TextView) findViewById(R.id.textView);
+
+        //setting custom font to texts
         Typeface tf = Typeface.createFromAsset(getAssets(),
                 "fonts/avenirheavy.otf");
         textView.setTypeface(tf);
         editText.setTypeface(tf);
 
+        // create AlertDialog in case of blank id
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Vous devez entrer l'id d'une vidéo")
                 .setTitle("ID MANQUANT");
@@ -56,11 +72,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v==button) {
             if (!editText.getText().toString().trim().equals("")) {
+                // if text isn't blan, show the ViedoActivity
                 Intent intent = new Intent(MainActivity.this, VideoActivity.class);
                 intent.putExtra(VIDEO_ID, editText.getText().toString());
                 startActivity(intent);
             }
             else {
+                // else show the AlertDialog
                 dialog.show();
             }
 

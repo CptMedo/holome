@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+ activity_main.xml
+ by Médéric Hénin on 12/02/2016
+
+ THIS SOFTWARE IS UNDER CC-BY-NC LICENSE :
+ The licensor permits others to copy, distribute, display, and perform the work.
+ In return, licenses must give the original author credit.
+ The licensor permits others to copy, distribute, display, and perform the work.
+ In return, licenses may not use the work for commercial purposes unless they get the licensor's permission.
+-->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
